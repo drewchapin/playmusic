@@ -100,6 +100,14 @@ Retrieve Playlists
     });
 ```
 
+Retrieve Playlist by name
+```js
+    // gets a playlist by its name
+    pm.getPlayListByName("My PlayList",function(err,playlist) {
+        console.log(playlist);
+    });
+```
+
 Get favorite songs
 ```js
 	pm.getFavorites(function(err, data) {

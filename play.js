@@ -371,6 +371,23 @@ PlayMusic.prototype.getPlayLists = function (callback) {
 };
 
 /**
+ * Returns a playlist given its name.
+ *
+ * @param name The name of the playlist to find.
+ * @param callback function(err,playlist) - success and fail callback. 
+ *                 playlist will be undefined if it does not exist.
+ */
+PlayMusic.prototype.getPlayListByName = function(name,callback) {
+    this.getPlayLists(function(err,response) {
+        for( var i = 0; i < response.data.items.length; i++ ) {
+            if( response.data.items[i].name == name )
+                return callback(null,response.data.items[i]);
+        }
+        callback(err,undefined);
+    });
+};
+
+/**
 * Creates a new playlist
 *
 * @param playlistName string - the playlist name
